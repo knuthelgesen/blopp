@@ -1,0 +1,21 @@
+<html data-ng-app="blopp" data-ng-strict-di>
+	<head>
+		<base href="/">	
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+			
+		<title>Blopp</title>
+
+		<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+
+		<script type="text/javascript" src="app/app.js"></script>
+		<script type="text/javascript" src="app/template-controller.js"></script>
+		<script type="text/javascript" src="app/common/breadcrumbs/breadcrumbs-directive.js"></script>
+		<script type="text/javascript" src="app/common/url-resolver/contentInformationResolver-resource.js"></script>
+	</head>
+	<body data-ng-controller="blopp-controller as bloppCtrl">
+		<div data-ng-view=""></div>
+	</body>
+</html>

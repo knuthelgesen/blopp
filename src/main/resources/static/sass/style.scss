@@ -1,0 +1,115 @@
+@import 'variables';
+
+// -------------------------------------------------------------------------
+// Body
+// -------------------------------------------------------------------------
+body {
+	background-color: $global_background;
+	margin: 0;
+}
+
+// -------------------------------------------------------------------------
+// Site header and title
+// -------------------------------------------------------------------------
+div.site_title {
+	border-bottom: 0.3rem solid $global_purple;
+	width: 100%;
+	margin: 0 0 2rem 0;
+	
+	h1 {
+		margin: 0 0 1rem 0;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 3rem;
+		
+		a:link,
+		a:visited,
+		a:hover,
+		a:active {
+			color: black;
+			text-decoration: none;
+		}		
+	}
+}
+
+// -------------------------------------------------------------------------
+// Template container
+// -------------------------------------------------------------------------
+.template_container {
+	max-width: 1024px;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+main {
+	@media (min-width: 700px) {
+		width: 66%;
+	}
+	@media (max-width: 700px) {
+		width: 100%;
+	}
+}
+
+aside {
+	@media (min-width: 700px) {
+		width: 33%;
+	}
+	@media (max-width: 700px) {
+		width: 100%;
+	}
+}
+
+// -------------------------------------------------------------------------
+// Breadcrumbs
+// -------------------------------------------------------------------------
+ul.breadcrumbs {
+	list-style: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
+	
+	a:link,
+	a:visited,
+	a:hover,
+	a:active {
+		color: white;
+		text-decoration: none;
+	}
+
+	li {
+		display: flex;
+		align-items: center;
+		font-size: 1.2rem;
+		
+		.breadcrumb {
+			background: $global_green;
+			border: solid 0.2rem $global_green;
+			border-radius: 0.9rem;
+			padding: 0.14rem 0.6rem 0.14rem 0.6rem;
+			
+			
+			&:not(.inactive):hover,
+			&:not(.inactive):active {
+				background: darken($global_green, 10);
+				border-color: darken($global_green, 10);
+			}
+			
+			&.inactive {
+				background: $inactive_grey;
+				color: $inactive_text;
+			}
+		}
+	}
+	:not(:last-child)::after {
+		content: "";
+		background: $global_green;
+		width: 1rem;
+		height: 0.2rem;
+	}		
+}
+
+// -------------------------------------------------------------------------
+// Import style for specific pages
+// -------------------------------------------------------------------------
+@import 'page_blog_entry';

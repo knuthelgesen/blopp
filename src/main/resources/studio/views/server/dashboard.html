@@ -1,0 +1,10 @@
+<div class="admin-header">
+  <h2> {{current.title | capitalize}}</h2>
+</div>
+<div class="card">
+  <div class="row">
+    <div class="col-md-12 dashboard-container">
+      <ng-include src="getTemplate(active)"></ng-include>
+    </div>
+  </div>
+</div>

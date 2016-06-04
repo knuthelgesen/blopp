@@ -1,0 +1,8 @@
+<div>
+	<ul class="breadcrumbs">
+		<li data-ng-repeat-start="breadcrumb in breadcrumbs.breadcrumbs" data-ng-if="!$last" class="active">
+			<div class="breadcrumb active"><a data-ng-href="{{breadcrumb.urlString}}" title="{{breadcrumb.name}}">{{breadcrumb.name}}</a></div>
+		</li>
+		<li data-ng-repeat-end="" data-ng-if="$last"><div class="breadcrumb inactive">{{breadcrumb.name}}</div></li>
+	</ul>
+</div>
