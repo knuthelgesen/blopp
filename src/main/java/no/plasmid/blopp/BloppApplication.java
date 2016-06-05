@@ -14,10 +14,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BloppApplication {
 
-  private final static Logger LOG = LoggerFactory.getLogger(BloppApplication.class);
+	private final static Logger LOG = LoggerFactory.getLogger(BloppApplication.class);
 
-  public static void main(String[] args) throws SQLException {
-    //Initialize DB factory
+	public static void main(String[] args) throws SQLException {
+		//Initialize DB factory
 		OrientDBTransactionFactory transactionFactory = new OrientDBTransactionFactory();
 		transactionFactory.connect();
 

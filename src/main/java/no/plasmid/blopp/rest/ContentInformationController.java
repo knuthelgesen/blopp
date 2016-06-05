@@ -2,6 +2,7 @@ package no.plasmid.blopp.rest;
 
 import no.plasmid.blopp.domain.NavigationElement;
 import no.plasmid.blopp.domain.NavigationPage;
+import no.plasmid.blopp.exception.NotFoundException;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -16,15 +17,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/blopp-api/rest")
 public class ContentInformationController {
 
-  private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(ContentInformationController.class);
+	private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(ContentInformationController.class);
 
-  @RequestMapping(method = RequestMethod.GET, value = "/content-information")
-  @ResponseBody
-  public ResponseEntity<ContentInformationJson> getContentInformation(@RequestParam(value = "url") String url) {
-  	LOG.debug("Get content information for URL: " + url);
+	@RequestMapping(method = RequestMethod.GET, value = "/content-information")
+	@ResponseBody
+	public ResponseEntity<ContentInformationJson> getContentInformation(@RequestParam(value = "url") String url) {
+		LOG.debug("Get content information for URL: " + url);
 		NavigationElement<?> found = NavigationElement.findDecendent(NavigationPage.getFrontPage(), url);
   	
-  	return new ResponseEntity<ContentInformationJson>(new ContentInformationJson(found), HttpStatus.OK);
-  }
+		if (null == found) { throw new NotFoundException("Could not find content with URL " + url); }
+		
+		return new ResponseEntity<ContentInformationJson>(new ContentInformationJson(found), HttpStatus.OK);
+	}
   	
 }
