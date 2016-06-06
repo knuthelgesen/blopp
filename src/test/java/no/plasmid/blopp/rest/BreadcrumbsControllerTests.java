@@ -1,5 +1,7 @@
 package no.plasmid.blopp.rest;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,30 +12,37 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import no.plasmid.blopp.BloppApplication;
 import no.plasmid.blopp.exception.ErrorJson;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = BloppApplication.class)
 @WebAppConfiguration
-public class ContentInformationControllerTests extends AbstractRestControllerTest {
+public class BreadcrumbsControllerTests extends AbstractRestControllerTest {
 
 	@Test
-	public void testGetContentInformation() throws Exception {
-		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/blopp-api/rest/content-information")
-				.param("url", "/")).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+	public void testGetBreadcrumbs() throws Exception {
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/blopp-api/rest/breadcrumbs")
+				.param("url", "/search")).andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 		String resultString = result.getResponse().getContentAsString();
 		Assert.assertNotNull(resultString);
-		ContentInformationJson resultObject = mapper.readValue(resultString, ContentInformationJson.class);
-		Assert.assertNotNull(resultObject);
-		Assert.assertEquals("NavigationPage", resultObject.getContentType());
-		Assert.assertEquals("Front page", resultObject.getName());
-		Assert.assertNotNull(resultObject.getVertexId());
+		List<BreadcrumbsEntryJson> resultObjects = mapper.readValue(resultString, new TypeReference<List<BreadcrumbsEntryJson>>(){});
+		Assert.assertNotNull(resultObjects);
+		Assert.assertEquals(2, resultObjects.size());
+
+		BreadcrumbsEntryJson firstEntry = resultObjects.get(0);
+		Assert.assertEquals("Front page", firstEntry.getName());
+		Assert.assertEquals("/", firstEntry.getUrlString());
+		BreadcrumbsEntryJson secondEntry = resultObjects.get(1);
+		Assert.assertEquals("Search", secondEntry.getName());
+		Assert.assertEquals("/search/", secondEntry.getUrlString());
 	}
 
 	@Test
-	public void testGetContentInformationNotExist() throws Exception {
-		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/blopp-api/rest/content-information")
+	public void testGetBreadcrumbsNotExist() throws Exception {
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/blopp-api/rest/breadcrumbs")
 				.param("url", "/not-exist")).andExpect(MockMvcResultMatchers.status().isNotFound()).andReturn();
 		String resultString = result.getResponse().getContentAsString();
 		ErrorJson resultObject = mapper.readValue(resultString, ErrorJson.class);
@@ -43,7 +52,7 @@ public class ContentInformationControllerTests extends AbstractRestControllerTes
 	}
 	
 	@Test
-	public void testGetContentInformationMissingUrl() throws Exception {
+	public void testGetBreadcrumbsMissingUrl() throws Exception {
 		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/blopp-api/rest/content-information"))
 				.andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn();
 		String resultString = result.getResponse().getContentAsString();

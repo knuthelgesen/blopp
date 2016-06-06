@@ -6,7 +6,7 @@ import com.tinkerpop.blueprints.Direction;
 import com.tinkerpop.blueprints.impls.orient.OrientEdge;
 
 @EdgeClassName(value="E")
-public abstract class DomainRelation<T extends DomainRelation<T>> {
+public abstract class DomainRelation<T extends DomainRelation<?>> {
 
   private OrientEdge oe;
 

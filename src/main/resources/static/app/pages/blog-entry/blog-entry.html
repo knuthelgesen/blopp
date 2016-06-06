@@ -1,7 +1,7 @@
-<div>
-	<article>
+<div data-ng-controller="BlogEntryController as blogEntryCtrl">
+	<article data-ng-if="blogEntryCtrl.blogEntry">
 		<div>
-			<h1>Blog entry!</h1>
+			<h1>{{blogEntryCtrl.blogEntry.name}}</h1>
 		</div>
 	</article>
 </div>

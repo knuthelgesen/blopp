@@ -13,54 +13,58 @@ import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 
 public class OrientDBTransactionWrapper extends AbstractOrientDBWrapper {
 
-  private final static Logger LOG = LoggerFactory.getLogger(OrientDBTransactionWrapper.class);
+	private final static Logger LOG = LoggerFactory.getLogger(OrientDBTransactionWrapper.class);
 	
-  protected static ThreadLocal<Stack<OrientDBTransactionWrapper>> threadBoundInstances = new ThreadLocal<Stack<OrientDBTransactionWrapper>>();
+	protected static ThreadLocal<Stack<OrientDBTransactionWrapper>> threadBoundInstances = new ThreadLocal<Stack<OrientDBTransactionWrapper>>();
 
-  private OrientGraph graph;
+	private OrientGraph graph;
 
-  public OrientDBTransactionWrapper(OrientGraph graph) {
-    pushInstance(this);
-    this.graph = graph;
-  }
+	public OrientDBTransactionWrapper(OrientGraph graph) {
+		pushInstance(this);
+		this.graph = graph;
+	}
 
-  public static OrientDBTransactionWrapper getInstance() {
-    Stack<OrientDBTransactionWrapper> transactions = threadBoundInstances.get();
-    if (null == transactions) {
-        transactions = new Stack<OrientDBTransactionWrapper>();
-        threadBoundInstances.set(transactions);
-    }
-    if (transactions.isEmpty()) {
-        return null;
-    }
-    return transactions.peek();
-  }
+	public static OrientDBTransactionWrapper getInstance() {
+		Stack<OrientDBTransactionWrapper> transactions = threadBoundInstances.get();
+		if (null == transactions) {
+			transactions = new Stack<OrientDBTransactionWrapper>();
+			threadBoundInstances.set(transactions);
+		}
+		if (transactions.isEmpty()) {
+			return null;
+		}
+		return transactions.peek();
+	}
 
-  protected static void pushInstance(OrientDBTransactionWrapper transaction) {
-    Stack<OrientDBTransactionWrapper> transactions = threadBoundInstances.get();
-    if (null == transactions) {
-        transactions = new Stack<OrientDBTransactionWrapper>();
-        threadBoundInstances.set(transactions);
-    }
-    transactions.push(transaction);
+	protected static void pushInstance(OrientDBTransactionWrapper transaction) {
+		Stack<OrientDBTransactionWrapper> transactions = threadBoundInstances.get();
+		if (null == transactions) {
+			transactions = new Stack<OrientDBTransactionWrapper>();
+			threadBoundInstances.set(transactions);
+		}
+		transactions.push(transaction);
 	}
     
 	protected static void closeInstance() {
-    threadBoundInstances.get().pop();
+		threadBoundInstances.get().pop();
 	}
 
 	public void finish() {
-    closeInstance();
-    graph.commit();
-    graph.shutdown();
-  }
-
-  public void rollback() {
-    closeInstance();
-    graph.rollback();
-    graph.shutdown();
+		closeInstance();
+		graph.commit();
+		graph.shutdown();
 	}
-	
+
+	public void rollback() {
+	  closeInstance();
+	  graph.rollback();
+	  graph.shutdown();
+	}
+
+	public void commit() {
+	    graph.commit();
+	}
+
 	@Override
 	protected OrientBaseGraph getGraph() {
 		return graph;
@@ -72,5 +76,12 @@ public class OrientDBTransactionWrapper extends AbstractOrientDBWrapper {
 		}
 		throw new VertexNotFoundException("Could not find vertex with URN " + urn);
 	}
-	
+
+	public <T extends DomainObject<?>> T getById(Class<T> vertexClass, String vertexId) {
+		for (T vertex : findVertexInstances(vertexClass, "vId", vertexId)) {
+			return vertex;
+		}
+		throw new VertexNotFoundException("Could not find vertex with ID " + vertexId);
+	}
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import no.plasmid.blopp.domain.NavigationElement;
 import no.plasmid.blopp.domain.NavigationPage;
+import no.plasmid.blopp.exception.NotFoundException;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.LoggerFactory;
@@ -20,10 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/blopp-api/rest")
 public class BreadcrumbsController {
 
-  private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(BreadcrumbsController.class);
+	private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(BreadcrumbsController.class);
 
 	@RequestMapping (value="breadcrumbs", method=RequestMethod.GET)
-  @ResponseBody
+	@ResponseBody
 	public ResponseEntity<List<BreadcrumbsEntryJson>> get(@RequestParam(value = "url") String url) {
 		LOG.debug("Get breadcrumbs for URL: " + url);
 		List<BreadcrumbsEntryJson> rc = new ArrayList<BreadcrumbsEntryJson>();
@@ -38,7 +39,7 @@ public class BreadcrumbsController {
 			
 			navElement = navElement.findChild(urlPart);
 			if (null == navElement) {
-				break;
+				throw new NotFoundException("Could not find content with URL " + url);
 			}
 			
 			rc.add(new BreadcrumbsEntryJson(navElement));
