@@ -6,6 +6,8 @@
 body {
 	background-color: $global_background;
 	margin: 0;
+	font-family: 'Merriweather', serif;
+	font-size: 0.9rem;
 }
 
 // -------------------------------------------------------------------------
@@ -17,10 +19,11 @@ div.site_title {
 	margin: 0 0 2rem 0;
 	
 	h1 {
+		font-family: 'Ubuntu', sans-serif;
+		font-size: 3.3rem;
 		margin: 0 0 1rem 0;
 		text-align: center;
 		text-transform: uppercase;
-		font-size: 3rem;
 		
 		a:link,
 		a:visited,
@@ -44,7 +47,8 @@ div.site_title {
 
 main {
 	@media (min-width: 700px) {
-		width: 66%;
+		width: 74%;
+		margin-right: 0.1rem;
 	}
 	@media (max-width: 700px) {
 		width: 100%;
@@ -53,7 +57,8 @@ main {
 
 aside {
 	@media (min-width: 700px) {
-		width: 33%;
+		width: 24%;
+		margin-left: 0.1rem;
 	}
 	@media (max-width: 700px) {
 		width: 100%;
@@ -63,9 +68,14 @@ aside {
 // -------------------------------------------------------------------------
 // Breadcrumbs
 // -------------------------------------------------------------------------
+.breadcrumbs_container {
+	width: 100%;
+}
+
 ul.breadcrumbs {
-	list-style: none;
 	display: flex;
+	font-size: 0.9rem;
+	list-style: none;
 	margin: 0;
 	padding: 0;
 	
@@ -80,7 +90,6 @@ ul.breadcrumbs {
 	li {
 		display: flex;
 		align-items: center;
-		font-size: 1.2rem;
 		
 		.breadcrumb {
 			background: $global_green;
@@ -110,6 +119,14 @@ ul.breadcrumbs {
 }
 
 // -------------------------------------------------------------------------
+// Code
+// -------------------------------------------------------------------------
+.code {
+	font-family: 'Share Tech Mono';
+}
+
+// -------------------------------------------------------------------------
 // Import style for specific pages
 // -------------------------------------------------------------------------
 @import 'page_blog_entry';
+@import 'aside';

@@ -3,9 +3,9 @@ package no.plasmid.blopp.migration;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 
 import no.plasmid.blopp.domain.EdgeClass;
-import no.plasmid.blopp.domain.NavigationPage;
-import no.plasmid.blopp.domain.ParentChild;
 import no.plasmid.blopp.domain.VertexClass;
+import no.plasmid.blopp.domain.domainobject.NavigationPage;
+import no.plasmid.blopp.domain.domainrelation.ParentChild;
 import no.plasmid.blopp.orientdb.OrientDBTransactionFactory;
 import no.plasmid.blopp.orientdb.OrientDBTransactionWrapper;
 
@@ -37,7 +37,7 @@ public class Migration_20160522_1135_NavigationElement extends Migration {
 		OrientDBTransactionWrapper transaction = transactionFactory.getTransaction();
 		NavigationPage frontPage = new NavigationPage("Front page").setUrn("front-page");
 		NavigationPage searchPage = new NavigationPage("Search");
-		new ParentChild(frontPage, searchPage).setUrlFragment("search");
+		new ParentChild(frontPage, searchPage, "search");
 		transaction.finish();
 	}
 

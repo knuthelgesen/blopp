@@ -1,4 +1,4 @@
-var app = angular.module('blopp', ['ngRoute', 'ngResource']);
+var app = angular.module('blopp', ['ngRoute', 'ngResource', 'ngSanitize']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	  $locationProvider.html5Mode(true);

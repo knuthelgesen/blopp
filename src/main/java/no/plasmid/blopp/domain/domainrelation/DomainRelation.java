@@ -1,5 +1,8 @@
-package no.plasmid.blopp.domain;
+package no.plasmid.blopp.domain.domainrelation;
 
+import no.plasmid.blopp.domain.DomainUtils;
+import no.plasmid.blopp.domain.EdgeClassName;
+import no.plasmid.blopp.domain.domainobject.DomainObject;
 import no.plasmid.blopp.orientdb.OrientDBTransactionWrapper;
 
 import com.tinkerpop.blueprints.Direction;

@@ -1,6 +1,8 @@
-package no.plasmid.blopp.domain;
+package no.plasmid.blopp.domain.domainobject;
 
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
+
+import no.plasmid.blopp.domain.VertexClassName;
 
 @VertexClassName (value="Category")
 public class Category extends NavigationElement<Category> {

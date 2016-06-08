@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import no.plasmid.blopp.AbstractInMemoryTest;
+import no.plasmid.blopp.domain.domainobject.NavigationElement;
+import no.plasmid.blopp.domain.domainrelation.ParentChild;
 
 public class NavigationElementTests extends AbstractInMemoryTest {
 
@@ -13,8 +15,8 @@ public class NavigationElementTests extends AbstractInMemoryTest {
 		TestNavigationElement child1 = new TestNavigationElement("Child 1");
 		TestNavigationElement child2 = new TestNavigationElement("Child 2");
 		
-		new ParentChild(parent, child1).setUrlFragment("child1");
-		new ParentChild(parent, child2).setUrlFragment("child2");
+		new ParentChild(parent, child1, "child1");
+		new ParentChild(parent, child2, "child2");
 		
 		TestNavigationElement found1 = parent.findChild("child1");
 		Assert.assertNotNull(found1);
@@ -29,7 +31,7 @@ public class NavigationElementTests extends AbstractInMemoryTest {
 		TestNavigationElement parent = new TestNavigationElement("Parent");
 		TestNavigationElement child1 = new TestNavigationElement("Child 1");
 		
-		new ParentChild(parent, child1).setUrlFragment("child1");
+		new ParentChild(parent, child1, "child1");
 		
 		TestNavigationElement found = child1.getParent();
 		Assert.assertNotNull(found);
@@ -42,8 +44,8 @@ public class NavigationElementTests extends AbstractInMemoryTest {
 		TestNavigationElement child1 = new TestNavigationElement("Child 1");
 		TestNavigationElement child2 = new TestNavigationElement("Child 2");
 		
-		new ParentChild(parent, child1).setUrlFragment("child1");
-		new ParentChild(child1, child2).setUrlFragment("child2");
+		new ParentChild(parent, child1, "child1");
+		new ParentChild(child1, child2, "child2");
 		
 		TestNavigationElement found = NavigationElement.findDecendent(parent, "/child1/child2");
 		Assert.assertNotNull(found);
@@ -56,8 +58,8 @@ public class NavigationElementTests extends AbstractInMemoryTest {
 		TestNavigationElement child1 = new TestNavigationElement("Child 1");
 		TestNavigationElement child2 = new TestNavigationElement("Child 2");
 		
-		new ParentChild(parent, child1).setUrlFragment("child1");
-		new ParentChild(child1, child2).setUrlFragment("child2");
+		new ParentChild(parent, child1, "child1");
+		new ParentChild(child1, child2, "child2");
 		
 		String urlString = child2.getUrlString();
 		Assert.assertNotNull(urlString);

@@ -2,7 +2,7 @@ package no.plasmid.blopp.orientdb;
 
 import java.util.Stack;
 
-import no.plasmid.blopp.domain.DomainObject;
+import no.plasmid.blopp.domain.domainobject.DomainObject;
 import no.plasmid.blopp.exception.VertexNotFoundException;
 
 import org.slf4j.Logger;

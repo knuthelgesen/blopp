@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import no.plasmid.blopp.AbstractInMemoryTest;
+import no.plasmid.blopp.domain.domainobject.NavigationPage;
 
 public class NavigationPageTests extends AbstractInMemoryTest {
 

@@ -3,10 +3,10 @@ package no.plasmid.blopp.orientdb;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
-import no.plasmid.blopp.domain.DomainObject;
-import no.plasmid.blopp.domain.DomainRelation;
 import no.plasmid.blopp.domain.EdgeClassName;
 import no.plasmid.blopp.domain.VertexClassName;
+import no.plasmid.blopp.domain.domainobject.DomainObject;
+import no.plasmid.blopp.domain.domainrelation.DomainRelation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

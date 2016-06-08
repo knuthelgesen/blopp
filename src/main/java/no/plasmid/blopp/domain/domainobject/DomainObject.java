@@ -1,5 +1,8 @@
-package no.plasmid.blopp.domain;
+package no.plasmid.blopp.domain.domainobject;
 
+import no.plasmid.blopp.domain.DomainUtils;
+import no.plasmid.blopp.domain.VertexClassName;
+import no.plasmid.blopp.domain.domainrelation.DomainRelation;
 import no.plasmid.blopp.orientdb.OrientDBTransactionWrapper;
 
 import java.util.ArrayList;

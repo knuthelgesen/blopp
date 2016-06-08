@@ -22,11 +22,13 @@ public class EdgeClass {
     OProperty op = oet.getProperty("out");
     //Remove property from old linked class
     if (null != op.getLinkedClass()) {
-        op.getLinkedClass().dropProperty("out_" + oet.getName());
+    	if (null != op.getLinkedClass().getProperty("out_" + oet.getName())) {
+            op.getLinkedClass().dropProperty("out_" + oet.getName());
+    	}
     }
     
     //Set linked class to new one
-    oet.getProperty("out").setLinkedClass(outVertexClass.ovt);
+    oet.createProperty("out", OType.LINK, outVertexClass.ovt);
     
     //Set property on new linked class
     outVertexClass.ovt.createProperty("out_" + oet.getName(), OType.LINKBAG);
@@ -38,11 +40,13 @@ public class EdgeClass {
     OProperty op = oet.getProperty("in");
     //Remove property from old linked class
     if (null != op.getLinkedClass()) {
-        op.getLinkedClass().dropProperty("in_" + oet.getName());
+    	if (null != op.getLinkedClass().getProperty("in_" + oet.getName())) {
+            op.getLinkedClass().dropProperty("in_" + oet.getName());
+    	}
     }
     
     //Set linked class to new one
-    oet.getProperty("in").setLinkedClass(inVertexClass.ovt);
+    oet.createProperty("in", OType.LINK, inVertexClass.ovt);
     
     //Set property on new linked class
     inVertexClass.ovt.createProperty("in_" + oet.getName(), OType.LINKBAG);

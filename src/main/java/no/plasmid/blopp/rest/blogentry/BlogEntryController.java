@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import no.plasmid.blopp.domain.BlogEntry;
+import no.plasmid.blopp.domain.domainobject.BlogEntry;
 import no.plasmid.blopp.orientdb.OrientDBTransactionWrapper;
 
 @Controller

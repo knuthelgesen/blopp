@@ -1,7 +1,13 @@
 <div data-ng-controller="BlogEntryController as blogEntryCtrl">
 	<article data-ng-if="blogEntryCtrl.blogEntry">
-		<div>
+		<div class="page_title">
 			<h1>{{blogEntryCtrl.blogEntry.name}}</h1>
+		</div>
+		<div class="lead_text">
+			<div data-ng-bind-html="blogEntryCtrl.blogEntry.leadText"></div>
+		</div>
+		<div class="body_text">
+			<div data-ng-bind-html="blogEntryCtrl.blogEntry.bodyText"></div>
 		</div>
 	</article>
 </div>

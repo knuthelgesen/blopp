@@ -1,6 +1,6 @@
 package no.plasmid.blopp.rest;
 
-import no.plasmid.blopp.domain.NavigationElement;
+import no.plasmid.blopp.domain.domainobject.NavigationElement;
 
 public class BreadcrumbsEntryJson {
 

@@ -3,8 +3,8 @@ package no.plasmid.blopp.rest;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.plasmid.blopp.domain.NavigationElement;
-import no.plasmid.blopp.domain.NavigationPage;
+import no.plasmid.blopp.domain.domainobject.NavigationElement;
+import no.plasmid.blopp.domain.domainobject.NavigationPage;
 import no.plasmid.blopp.exception.NotFoundException;
 
 import org.apache.commons.lang.StringUtils;

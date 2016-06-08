@@ -6,6 +6,7 @@ import org.junit.Test;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
 import no.plasmid.blopp.AbstractInMemoryTest;
+import no.plasmid.blopp.domain.domainobject.DomainObject;
 
 public class DomainObjectTests extends AbstractInMemoryTest {
 

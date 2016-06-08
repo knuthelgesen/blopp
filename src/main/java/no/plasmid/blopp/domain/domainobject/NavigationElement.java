@@ -1,6 +1,8 @@
-package no.plasmid.blopp.domain;
+package no.plasmid.blopp.domain.domainobject;
 
 import no.plasmid.blopp.URLResolverFilter;
+import no.plasmid.blopp.domain.VertexClassName;
+import no.plasmid.blopp.domain.domainrelation.ParentChild;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -37,7 +39,7 @@ public abstract class NavigationElement<T> extends DomainObject<NavigationElemen
 	public String getUrlString() {
 		ParentChild relationToParent = getRelation(ParentChild.class, Direction.IN);
 		if (null != relationToParent) {
-			return relationToParent.getParentDomainObject().getUrlString() + relationToParent.getProperty("urlFragment") + "/";
+			return relationToParent.getParentDomainObject().getUrlString() + relationToParent.getUrlFragment() + "/";
 		} else {
 			return "/";	//Root node, so no url fragment :)
 		}

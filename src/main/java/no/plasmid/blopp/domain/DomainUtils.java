@@ -13,6 +13,9 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import com.tinkerpop.blueprints.impls.orient.OrientEdge;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
 
+import no.plasmid.blopp.domain.domainobject.DomainObject;
+import no.plasmid.blopp.domain.domainrelation.DomainRelation;
+
 public class DomainUtils {
 
 	private final static Logger LOG = LoggerFactory.getLogger(DomainUtils.class);

@@ -1,6 +1,6 @@
 package no.plasmid.blopp.rest;
 
-import no.plasmid.blopp.domain.DomainObject;
+import no.plasmid.blopp.domain.domainobject.DomainObject;
 
 public class ContentInformationJson {
 
