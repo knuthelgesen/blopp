@@ -41,28 +41,6 @@ div.site_title {
 .template_container {
 	max-width: 1024px;
 	margin: auto;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-main {
-	@media (min-width: 700px) {
-		width: 74%;
-		margin-right: 0.1rem;
-	}
-	@media (max-width: 700px) {
-		width: 100%;
-	}
-}
-
-aside {
-	@media (min-width: 700px) {
-		width: 24%;
-		margin-left: 0.1rem;
-	}
-	@media (max-width: 700px) {
-		width: 100%;
-	}
 }
 
 // -------------------------------------------------------------------------
@@ -129,4 +107,5 @@ ul.breadcrumbs {
 // Import style for specific pages
 // -------------------------------------------------------------------------
 @import 'page_blog_entry';
+@import 'page_category';
 @import 'aside';

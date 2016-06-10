@@ -4,6 +4,8 @@ import no.plasmid.blopp.URLResolverFilter;
 import no.plasmid.blopp.domain.VertexClassName;
 import no.plasmid.blopp.domain.domainrelation.ParentChild;
 
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +30,11 @@ public abstract class NavigationElement<T> extends DomainObject<NavigationElemen
 	public <R extends NavigationElement<?>> R getParent() {
 		R rc = (R) getRelatedDomainObject(ParentChild.class, Direction.IN);
 		return rc;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <R extends NavigationElement<?>> List<R> getChildren() {
+		return getRelatedDomainObjects(ParentChild.class, Direction.OUT);
 	}
 	
 	@SuppressWarnings({"unchecked"})

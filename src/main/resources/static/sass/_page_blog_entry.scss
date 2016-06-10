@@ -2,23 +2,49 @@
 // Styles for blog entries
 // -------------------------------------------------------------------------
 
-.page_title {
-	border-bottom: 0.3rem solid $global_blue;
-	margin: 2rem 0 2rem 0;
-	
-	h1 {
-		font-family: 'Ubuntu', sans-serif;
-		font-size: 2.2rem;
-		margin: 0;
+.blog_entry_container {
+	display: flex;
+	flex-wrap: wrap;
+
+	main {
+		@media (min-width: 700px) {
+			width: 74%;
+			margin-right: 0.1rem;
+		}
+		@media (max-width: 700px) {
+			width: 100%;
+		}
 	}
-}
+	
+	aside {
+		@media (min-width: 700px) {
+			width: 24%;
+			margin-left: 0.1rem;
+		}
+		@media (max-width: 700px) {
+			width: 100%;
+		}
+	}
 
-.lead_text {
-	font-weight: bold;
-	margin: 2rem 0 2rem 0;
-}
-
-.body_text {
-	font-weight: normal;
-	margin: 2rem 0 2rem 0;
+	.page_title {
+		border-bottom: 0.3rem solid $global_blue;
+		margin: 2rem 0 2rem 0;
+		min-height: 2.7rem;
+		
+		h2 {
+			font-family: 'Ubuntu', sans-serif;
+			font-size: 2.2rem;
+			margin: 0;
+		}
+	}
+	
+	.lead_text {
+		font-weight: bold;
+		margin: 2rem 0 2rem 0;
+	}
+	
+	.body_text {
+		font-weight: normal;
+		margin: 2rem 0 2rem 0;
+	}
 }

@@ -23,25 +23,7 @@ div.site_title {
 
 .template_container {
   max-width: 1024px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap; }
-
-@media (min-width: 700px) {
-  main {
-    width: 74%;
-    margin-right: 0.1rem; } }
-@media (max-width: 700px) {
-  main {
-    width: 100%; } }
-
-@media (min-width: 700px) {
-  aside {
-    width: 24%;
-    margin-left: 0.1rem; } }
-@media (max-width: 700px) {
-  aside {
-    width: 100%; } }
+  margin: auto; }
 
 .breadcrumbs_container {
   width: 100%; }
@@ -81,28 +63,119 @@ ul.breadcrumbs {
 .code {
   font-family: 'Share Tech Mono'; }
 
-.page_title {
-  border-bottom: 0.3rem solid #1562b0;
-  margin: 2rem 0 2rem 0; }
-  .page_title h1 {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 2.2rem;
+.blog_entry_container {
+  display: flex;
+  flex-wrap: wrap; }
+  @media (min-width: 700px) {
+    .blog_entry_container main {
+      width: 74%;
+      margin-right: 0.1rem; } }
+  @media (max-width: 700px) {
+    .blog_entry_container main {
+      width: 100%; } }
+  @media (min-width: 700px) {
+    .blog_entry_container aside {
+      width: 24%;
+      margin-left: 0.1rem; } }
+  @media (max-width: 700px) {
+    .blog_entry_container aside {
+      width: 100%; } }
+  .blog_entry_container .page_title {
+    border-bottom: 0.3rem solid #1562b0;
+    margin: 2rem 0 2rem 0;
+    min-height: 2.7rem; }
+    .blog_entry_container .page_title h2 {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 2.2rem;
+      margin: 0; }
+  .blog_entry_container .lead_text {
+    font-weight: bold;
+    margin: 2rem 0 2rem 0; }
+  .blog_entry_container .body_text {
+    font-weight: normal;
+    margin: 2rem 0 2rem 0; }
+
+.category_container {
+  display: flex;
+  flex-wrap: wrap; }
+  @media (min-width: 700px) {
+    .category_container main {
+      width: 74%;
+      margin-right: 0.1rem; } }
+  @media (max-width: 700px) {
+    .category_container main {
+      width: 100%; } }
+  @media (min-width: 700px) {
+    .category_container aside {
+      width: 24%;
+      margin-left: 0.1rem; } }
+  @media (max-width: 700px) {
+    .category_container aside {
+      width: 100%; } }
+  .category_container .page_title {
+    border-bottom: 0.3rem solid #1562b0;
+    margin: 2rem 0 2rem 0;
+    min-height: 2.7rem; }
+    .category_container .page_title h2 {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 2.2rem;
+      margin: 0; }
+  .category_container .current_category {
+    align-items: center;
+    background: #d3d3d3;
+    color: #999999;
+    border: solid 0.2rem #15b063;
+    border-radius: 0.9rem;
+    padding: 0.14rem 0.6rem 0.14rem 0.6rem; }
+  .category_container ul.sub_categories {
+    list-style: none;
+    margin-top: 0; }
+    .category_container ul.sub_categories a:link,
+    .category_container ul.sub_categories a:visited,
+    .category_container ul.sub_categories a:hover,
+    .category_container ul.sub_categories a:active {
+      color: white;
+      text-decoration: none; }
+    .category_container ul.sub_categories li {
+      display: flex;
+      align-items: center; }
+      .category_container ul.sub_categories li .vertical_bar {
+        align-self: flex-start;
+        background: #15b063;
+        width: 0.2rem;
+        height: 3rem; }
+      .category_container ul.sub_categories li .horizontal_bar {
+        background: #15b063;
+        width: 1rem;
+        height: 0.2rem; }
+      .category_container ul.sub_categories li .link_container {
+        align-items: center;
+        background: #15b063;
+        border: solid 0.2rem #15b063;
+        border-radius: 0.9rem;
+        padding: 0.14rem 0.6rem 0.14rem 0.6rem; }
+        .category_container ul.sub_categories li .link_container:hover, .category_container ul.sub_categories li .link_container:active {
+          background: #108249;
+          border-color: #108249; }
+    .category_container ul.sub_categories :last-child .vertical_bar {
+      height: 0.98rem; }
+  .category_container .article_list article {
+    margin-top: 2rem; }
+  .category_container .article_list h3 {
+    margin: 0 0 0.5rem 0; }
+  .category_container .article_list .lead_text {
+    font-weight: bold;
     margin: 0; }
-
-.lead_text {
-  font-weight: bold;
-  margin: 2rem 0 2rem 0; }
-
-.body_text {
-  font-weight: normal;
-  margin: 2rem 0 2rem 0; }
 
 .aside_title {
   border-bottom: 0.3rem solid #b06315;
-  margin: 2rem 0 2rem 0; }
-  .aside_title h1 {
+  displaY: flex;
+  align-items: flex-end;
+  margin: 2rem 0 2rem 0;
+  min-height: 2.7rem; }
+  .aside_title h2 {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 2.2rem;
+    font-size: 1.6rem;
     margin: 0; }
 
 /*# sourceMappingURL=style.css.map */

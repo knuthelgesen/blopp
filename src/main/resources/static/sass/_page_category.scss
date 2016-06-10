@@ -1,0 +1,108 @@
+// -------------------------------------------------------------------------
+// Styles for categories
+// -------------------------------------------------------------------------
+
+.category_container {
+	display: flex;
+	flex-wrap: wrap;
+
+	main {
+		@media (min-width: 700px) {
+			width: 74%;
+			margin-right: 0.1rem;
+		}
+		@media (max-width: 700px) {
+			width: 100%;
+		}
+	}
+	
+	aside {
+		@media (min-width: 700px) {
+			width: 24%;
+			margin-left: 0.1rem;
+		}
+		@media (max-width: 700px) {
+			width: 100%;
+		}
+	}
+
+	.page_title {
+		border-bottom: 0.3rem solid $global_blue;
+		margin: 2rem 0 2rem 0;
+		min-height: 2.7rem;
+		
+		h2 {
+			font-family: 'Ubuntu', sans-serif;
+			font-size: 2.2rem;
+			margin: 0;
+		}
+	}
+	
+	.current_category {
+		align-items: center;
+		background: $inactive_grey;
+		color: $inactive_text;
+		border: solid 0.2rem $global_green;
+		border-radius: 0.9rem;
+		padding: 0.14rem 0.6rem 0.14rem 0.6rem;
+	}
+	
+	ul.sub_categories {
+		list-style: none;
+		margin-top: 0;
+
+		a:link,
+		a:visited,
+		a:hover,
+		a:active {
+			color: white;
+			text-decoration: none;
+		}
+		
+		li {
+			display: flex;
+			align-items: center;
+
+			.vertical_bar {
+				align-self: flex-start;
+				background: $global_green;
+				width: 0.2rem;
+				height: 3rem;
+			}
+			.horizontal_bar {
+				background: $global_green;
+				width: 1rem;
+				height: 0.2rem;
+			}
+			.link_container {
+				align-items: center;
+				background: $global_green;
+				border: solid 0.2rem $global_green;
+				border-radius: 0.9rem;
+				padding: 0.14rem 0.6rem 0.14rem 0.6rem;
+
+				&:hover,
+				&:active {
+					background: darken($global_green, 10);
+					border-color: darken($global_green, 10);
+				}
+			}
+		}
+		:last-child .vertical_bar {
+			height: 0.98rem;
+		}
+	}
+	
+	.article_list {
+		article {
+			margin-top: 2rem;
+		}
+		h3 {
+			margin: 0 0 0.5rem 0;
+		}
+		.lead_text {
+			font-weight: bold;
+			margin: 0;
+		}
+	}
+}

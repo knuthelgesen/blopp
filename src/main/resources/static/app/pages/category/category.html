@@ -1,1 +1,32 @@
-<div class="page_title">Category</div>
+<div data-ng-controller="CategoryController as categoryCtrl" class="category_container">
+	<main>
+		<div class="page_title">
+			<h2>{{categoryCtrl.category.name}}</h2>
+		</div>
+		<div class="article_list">
+			<article data-ng-repeat="blogEntry in categoryCtrl.category.blogEntries">
+				<a data-ng-href="{{blogEntry.urlString}}" title="{{blogEntry.name}}">
+					<h3>{{blogEntry.name}}</h3>
+				</a>
+				<div class="lead_text">
+					<div data-ng-bind-html="blogEntry.leadText"></div>
+				</div>
+			</article>
+		</div>
+	</main>
+	<aside>
+		<div class="aside_title">
+			<h2>Meta</h2>
+		</div>
+		<div class="current_category">
+			{{categoryCtrl.category.name}}
+		</div>
+		<ul class="sub_categories">
+			<li data-ng-repeat="category in categoryCtrl.category.subCategories">
+				<div class="vertical_bar"></div>
+				<div class="horizontal_bar"></div>
+				<div class="link_container"><a data-ng-href="{{category.urlString}}" title="{{category.name}}">{{category.name}}</a></div>
+			</li>
+		</ul>
+	</aside>
+</div>
